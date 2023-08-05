@@ -16,16 +16,16 @@
 
 package com.example.demo.demos.web;
 
+import com.example.demo.model.User;
+import com.example.demo.service.FeignService;
+import com.example.demo.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
- */
+import javax.annotation.Resource;
+
 @Controller
+@RestController
 public class BasicController {
 
     // http://127.0.0.1:8080/hello?name=lisi
@@ -63,5 +63,21 @@ public class BasicController {
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
         user.setName("zhangsan");
         user.setAge(18);
+    }
+
+    @Resource
+    private UserService userService;
+    @GetMapping("/getUser")
+    public String getUser(@RequestParam String name) {
+        return userService.getName(name);
+    }
+
+
+    @Resource
+    private FeignService feignService;
+
+    @GetMapping("/feignTest")
+    public String feignTest(@RequestParam String name) {
+        return  feignService.getMessage(name);
     }
 }

@@ -19,6 +19,7 @@
         <module>demo-start</module>
         <module>demo-web</module>
         <module>demo-service</module>
+        <module>demo-model</module>
     </modules>
 
     <dependencies>
@@ -34,6 +35,12 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.0.8</version>
         </dependency>
 
         <dependency>
@@ -69,6 +76,11 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>demo-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>demo-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
