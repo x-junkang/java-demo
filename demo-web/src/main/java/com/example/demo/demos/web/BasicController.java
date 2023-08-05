@@ -61,8 +61,8 @@ public class BasicController {
     @ModelAttribute
     public void parseUser(@RequestParam(name = "name", defaultValue = "unknown user") String name
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
-        user.setName("zhangsan");
-        user.setAge(18);
+        user.setName(name);
+        user.setAge(age);
     }
 
     @Resource
@@ -76,6 +76,7 @@ public class BasicController {
     @Resource
     private FeignService feignService;
 
+    // http://127.0.0.1:8080/feignTest?name=lisi
     @GetMapping("/feignTest")
     public String feignTest(@RequestParam String name) {
         return  feignService.getMessage(name);
